@@ -1,0 +1,50 @@
+//playable
+package music;
+
+public interface Playable {
+    void play();
+    
+}
+
+//veena
+package music.string;
+import music.Playable;
+
+public class Veena implements Playable{
+    public void play(){
+        System.out.println("playing veena");
+    }
+}
+
+//saxophone
+package music.wind;
+
+import music.Playable;
+
+public class Saxophone implements Playable{
+    public void play(){
+        System.out.println("playing saxophone");
+    }
+}
+
+//test
+package live;
+import music.Playable;
+import music.string.Veena;
+import music.wind.Saxophone;
+
+public class Test {
+    public static void main(String[] args) {
+        Veena v = new Veena ();
+        Saxophone s = new Saxophone();
+        v.play();
+        s.play();
+        Playable p1 = new Veena();
+        Playable p2 = new Saxophone();
+        p1.play();
+        p2.play();
+    }
+
+    
+}
+
