@@ -1,0 +1,46 @@
+class Codec {
+public:
+
+    string serialize(TreeNode* root) {
+
+        if (!root)
+            return "N,";
+
+        return to_string(root->val) + "," +
+               serialize(root->left) +
+               serialize(root->right);
+    }
+
+    TreeNode* deserializeHelper(queue<string>& q) {
+
+        string val = q.front();
+        q.pop();
+
+        if (val == "N")
+            return NULL;
+
+        TreeNode* root = new TreeNode(stoi(val));
+
+        root->left = deserializeHelper(q);
+        root->right = deserializeHelper(q);
+
+        return root;
+    }
+
+    TreeNode* deserialize(string data) {
+
+        queue<string> q;
+        string temp;
+
+        for (char c : data) {
+            if (c == ',') {
+                q.push(temp);
+                temp.clear();
+            } else {
+                temp += c;
+            }
+        }
+
+        return deserializeHelper(q);
+    }
+};
