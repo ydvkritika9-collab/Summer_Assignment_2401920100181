@@ -1,0 +1,44 @@
+package oops3_project;
+
+abstract class Compartment {
+    public abstract String notice();
+}
+
+class FirstClass extends Compartment {
+    public String notice() {
+        return "Notice: Welcome to First Class.";
+    }
+}
+
+class General extends Compartment {
+    public String notice() {
+        return "Notice: General Compartment.";
+    }
+}
+
+class Ladies extends Compartment {
+    public String notice() {
+        return "Notice: Ladies Compartment.";
+    }
+}
+
+class Luggage extends Compartment {
+    public String notice() {
+        return "Notice: Luggage Compartment.";
+    }
+}
+
+public class TestCompartment {
+    public static void main(String[] args) {
+        Compartment[] c = {
+            new FirstClass(),
+            new General(),
+            new Ladies(),
+            new Luggage()
+        };
+
+        for (Compartment x : c) {
+            System.out.println(x.notice());
+        }
+    }
+}
